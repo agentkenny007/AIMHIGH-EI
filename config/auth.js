@@ -17,7 +17,7 @@ module.exports = {
   | Available Serializers - Lucid, Database
   |
   */
-  authenticator: 'session',
+  authenticator: 'jwt',
 
   /*
   |--------------------------------------------------------------------------
@@ -30,7 +30,7 @@ module.exports = {
   */
   session: {
     serializer: 'Lucid',
-    model: 'App/Model/User',
+    model: 'App/Model/School',
     scheme: 'session',
     uid: 'email',
     password: 'password'
@@ -46,7 +46,7 @@ module.exports = {
   */
   basic: {
     serializer: 'Lucid',
-    model: 'App/Model/User',
+    model: 'App/Model/School',
     scheme: 'basic',
     uid: 'email',
     password: 'password'
@@ -63,7 +63,7 @@ module.exports = {
   */
   jwt: {
     serializer: 'Lucid',
-    model: 'App/Model/User',
+    model: 'App/Model/School',
     scheme: 'jwt',
     uid: 'email',
     password: 'password',
@@ -78,7 +78,7 @@ module.exports = {
   | Api authenticator authenticates are requests based on Authorization
   | header.
   |
-  | Make sure to define relationships on User and Token model as defined
+  | Make sure to define relationships on School and Token model as defined
   | in documentation
   |
   */
