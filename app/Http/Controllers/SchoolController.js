@@ -16,7 +16,7 @@ class SchoolController {
     response.json(school)
   }
 
-  * show(request, response) {
+  * login(request, response) {
     const input = request.only('name', 'password')
     try {
       const school = yield School.findBy('name', input.name)
@@ -25,13 +25,32 @@ class SchoolController {
       const verify = yield Hash.verify(input.password, school.password)
       if (!verify) throw new Error("Wrong password!")
 
-      console.log(request.auth)
-      school._token = yield request.auth.generate(school)
+      school.access_token = yield request.auth.generate(school)
       response.json(school)
     } catch (e) {
       response.status(401).json({ error: e.message })
     }
   }
+
+  * loginAdmin(request, response) {
+    const input = request.only('username', 'password')
+    try {
+      const admin = yield School.findBy('name', input.username)
+      if (!admin) throw new Error("Invalid credentials.")
+
+      const verify = yield Hash.verify(input.password, admin.password)
+      if (!verify) throw new Error("Invalid credentials.")
+
+      admin.admin_token = yield request.auth.generate(admin)
+      response.json(admin)
+    } catch (e) {
+      response.status(403).json({ error: e.message })
+    }
+  }
+
+  * show(request, response) {
+    console.log("Logging into toolkit for user: ", request.authUser)
+    return response.json(request.authUser) }
 
   * update(request, response) {
     //
