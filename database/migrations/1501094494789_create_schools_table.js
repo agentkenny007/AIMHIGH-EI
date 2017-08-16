@@ -9,6 +9,8 @@ class UsersTableSchema extends Schema {
       table.increments()
       table.string('name', 150).notNullable().unique()
       table.string('password', 60).notNullable()
+      table.boolean('admin').defaultTo(false)
+      table.string('passcode', 60)
       table.timestamps()
     })
   }
