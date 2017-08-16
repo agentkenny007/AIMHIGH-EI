@@ -32,7 +32,7 @@ module.exports = {
     serializer: 'Lucid',
     model: 'App/Model/School',
     scheme: 'session',
-    uid: 'email',
+    uid: 'name',
     password: 'password'
   },
 
@@ -48,7 +48,7 @@ module.exports = {
     serializer: 'Lucid',
     model: 'App/Model/School',
     scheme: 'basic',
-    uid: 'email',
+    uid: 'name',
     password: 'password'
   },
 
@@ -65,7 +65,7 @@ module.exports = {
     serializer: 'Lucid',
     model: 'App/Model/School',
     scheme: 'jwt',
-    uid: 'email',
+    uid: 'name',
     password: 'password',
     secret: Config.get('app.appKey')
   },
